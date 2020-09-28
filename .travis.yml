@@ -168,7 +168,7 @@ script:
 - free -m
 - df -h
 - cat /etc/resolv.conf
-
+- sudo cp daemon.json /etc/docker/daemon.json
 - docker system info
 - docker run ubuntu ls
 - docker images
