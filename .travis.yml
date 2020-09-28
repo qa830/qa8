@@ -1,10 +1,10 @@
 language: ruby
 dist: xenial
 
-before_install:
-- sudo apt update -yqq && sudo apt install dnsutils -y
-- nslookup github.com
-- nslookup google.com
+# before_install:
+# - sudo apt update -yqq && sudo apt install dnsutils -y
+# - nslookup github.com
+# - nslookup google.com
 # # jobs:
 # #   include:
 # #     - jdk: openjdk9
@@ -168,7 +168,7 @@ script:
 - free -m
 - df -h
 - cat /etc/resolv.conf
-- echo "{\"registry-mirrors\": [\"https://mirror.gcr.io\"] }" | sudo tee /etc/docker/daemon.json && sudo service docker restart
+- echo "{'registry-mirrors': ['https://mirror.gcr.io'] }" | sudo tee /etc/docker/daemon.json && sudo service docker restart
 - docker system info
 - docker run ubuntu ls
 - docker images
