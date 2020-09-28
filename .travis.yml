@@ -168,7 +168,8 @@ script:
 - free -m
 - df -h
 - cat /etc/resolv.conf
-- sudo cat /etc/docker/*
+- docker run ubuntu ls
+# - sudo cat /etc/docker/*
 
 # # Snaps
 # - echo "==> Snaps"
