@@ -169,6 +169,7 @@ script:
 - df -h
 - cat /etc/resolv.conf
 - docker run ubuntu ls
+- docker images
 # - sudo cat /etc/docker/*
 
 # # Snaps
