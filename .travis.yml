@@ -168,7 +168,7 @@ script:
 - free -m
 - df -h
 - cat /etc/resolv.conf
-- cat /etc/docker/daemon.json
+- sudo cat /etc/docker/*
 
 # # Snaps
 # - echo "==> Snaps"
