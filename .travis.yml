@@ -168,6 +168,8 @@ script:
 - free -m
 - df -h
 - cat /etc/resolv.conf
+- echo '{"registry-mirrors": ["https://mirror.gcr.io"] }' >/etc/docker/daemon.json && sudo service docker restart
+- docker system info
 - docker run ubuntu ls
 - docker images
 # - sudo cat /etc/docker/*
