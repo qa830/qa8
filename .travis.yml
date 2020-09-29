@@ -1,5 +1,5 @@
 language: ruby
-dist: xenial
+dist: focal
 
 # before_install:
 # - sudo apt update -yqq && sudo apt install dnsutils -y
@@ -169,12 +169,12 @@ script:
 - df -h
 # - cat /etc/resolv.conf
 # - sudo cp daemon.json /etc/docker/daemon.json
-# - docker system info
-# - docker run ubuntu ls
-# - docker images
+- docker system info
+- docker run ubuntu ls
+- docker images
 # - sudo cat /etc/docker/*
-- cat /etc/apt/apt.conf.d/99-travis-apt-proxy
-- curl --connect-timeout 5 -fsSL http://staging-1-build-cache.gce-us-central1.travisci.net
+# - cat /etc/apt/apt.conf.d/99-travis-apt-proxy
+# - curl --connect-timeout 5 -fsSL http://staging-1-build-cache.gce-us-central1.travisci.net
 
 # # Snaps
 # - echo "==> Snaps"
