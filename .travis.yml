@@ -1,6 +1,6 @@
 language: ruby
 dist: focal
-
+service: docker
 # before_install:
 # - sudo apt update -yqq && sudo apt install dnsutils -y
 # - nslookup github.com
