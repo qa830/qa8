@@ -1,5 +1,5 @@
 language: ruby
-dist: focal
+dist: bionic
 service: docker
 # before_install:
 # - sudo apt update -yqq && sudo apt install dnsutils -y
