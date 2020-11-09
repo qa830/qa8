@@ -39,3 +39,23 @@ jobs:
     name: Ruby 2.6.5
   - rvm: 2.6.6
     name: Ruby 2.6.6  
+   - rvm: 2.7.2
+    name: Ruby 2.7.2-a
+  - rvm: 2.7.1
+    name: Ruby 2.7.1-a
+  - rvm: 2.7.0
+    name: Ruby 2.7.0-a
+  - rvm: 2.6.0
+    name: Ruby 2.6.0-a
+  - rvm: 2.6.1
+    name: Ruby 2.6.1-a
+  - rvm: 2.6.2
+    name: Ruby 2.6.2-a
+  - rvm: 2.6.3
+    name: Ruby 2.6.3-a
+  - rvm: 2.6.4
+    name: Ruby 2.6.4-a
+  - rvm: 2.6.5
+    name: Ruby 2.6.5-a
+  - rvm: 2.6.6
+    name: Ruby 2.6.6-a 
