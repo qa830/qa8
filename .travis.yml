@@ -1,202 +1,41 @@
-language: ruby
-dist: bionic
-service: docker
-# before_install:
-# - sudo apt update -yqq && sudo apt install dnsutils -y
-# - nslookup github.com
-# - nslookup google.com
-# # jobs:
-# #   include:
-# #     - jdk: openjdk9
-# #     - jdk: openjdk8
-# #       arch: arm64
-# #     - jdk: openjdk13
-
-# # notifications:
-# #   email: false
-
-# # language: python
-# # #dist: bionic
-# # dist: xenial
-  
-# # # compiler:
-# # #   - gcc
-# # #   - clang
-
-# arch:
-# # #  - amd64
-# - ppc64le
-
-# python:
-# - "3.8.1"
-# - "3.8"
-# - "3.7"
-# - "3.6"
-# - "3.5"
-# - "3.4"
-# - "3.3"
-# - "3.2"
-# - "3.1"
-# - "3.0"
-# - "2.7"
-# # # install:
-# # #   - pip install --user numpy
-
-# # rvm:
-# # - 2.6.5
-# # - 2.6.4
-# # - 2.6.3
-# # - 2.6.2
-# # - 2.6.1
-# # - 2.6.0
-# # - 2.5.0
-# # - 2.5.1
-# # - 2.5.2
-# # - 2.5.3
-# # - 2.5.4
-# # - 2.5.5
-# # - 2.5.6
-
-# # arch: arm64
-# # dist: xenial
-# # language: bash
-
-# # go:
-# # - 1.12.x
-# # - 1.13.x
-
-# jobs:
-#   include:
-#   - name: dest-and-lang-default
-#   - dist: xenial
-#     name: xenial-lang-default
-#   - dist: bionic
-#     name: bionic-lang-default
-#   - dist: xenial
-#     name: xenial-ruby
-#     language: ruby
-#   - dist: bionic
-#     name: bionic-ruby
-#     language: ruby
-#   - dist: xenial
-#     name: xenial-c
-#     language: c
-#   - dist: bionic
-#     name: bionic-c
-#     language: c
-#   - dist: xenial
-#     name: xenial-go
-#     language: go
-#     script:
-#     - go version
-#   - dist: bionic
-#     name: bionic-go
-#     language: go
-#     script:
-#     - go version
-#   - dist: xenial
-#     name: xenial-python
-#     language: python
-#     python: "3.8.0"
-#     script:
-#     - python -V
-#   - dist: bionic
-#     name: bionic-python
-#     language: python
-#     python: "3.8.0"
-#     script:
-#     - python -V
-#   - dist: xenial
-#     name: xenial-python-default
-#     language: python
-#     script:
-#     - python -V
-#   - dist: bionic
-#     name: bionic-python-default
-#     language: python
-#     script:
-#     - python -V 
-#   - dist: xenial
-#     name: xenial-minimal
-#     language: minimal
-#   - dist: bionic
-#     name: bionic-minimal
-#     language: minimal
-#   - dist: xenial
-#     name: xenial-slim
-#     language: slim
-#   - dist: bionic
-#     name: bionic-slim
-#     language: slim
-#   - dist: xenial
-#     name: xenial-php
-#     language: php
-#     script:
-#     - php -v
-#   - dist: bionic
-#     name: bionic-php
-#     language: php
-#     script:
-#     - php -v
-#   - dist: xenial
-#     name: xenial-generic
-#     language: generic
-#     script:
-#     - php -v
-#   - dist: bionic
-#     name: bionic-generic
-#     language: generic
-#     script:
-#     - php -v
-# # cache:
-# #   directories:
-# #    - /home/travis/.rvm/
-     
-# # env:
-# # - BUILD=1
-# # - BUILD=2
-# # - BUILD=3
-
-install: skip
+service:
+- docker
 
 script:
-# Environment information
-- echo "==> Environment information"
-- uname -a
-- cat /etc/os-release
-- grep ^processor /proc/cpuinfo
-- free -m
-- df -h
-# - cat /etc/resolv.conf
-# - sudo cp daemon.json /etc/docker/daemon.json
-- docker system info
-- docker run ubuntu ls
-- docker images
-# - sudo cat /etc/docker/*
-# - cat /etc/apt/apt.conf.d/99-travis-apt-proxy
-# - curl --connect-timeout 5 -fsSL http://staging-1-build-cache.gce-us-central1.travisci.net
+- sudo ip a
+- sudo cat /etc/docker/daemon.json
+# - sudo rm /etc/docker/daemon.json
+# - curl -I 10.40.0.200:443
+# - curl -I 10.30.0.28:5000
+- curl -I https://registry.travis-ci.com
+- sudo cp daemon.json /etc/docker/daemon.json
+# - sudo rm -f /etc/docker/daemon.json
+- sudo systemctl restart docker
+- sudo cat /etc/docker/daemon.json
+- docker run node ls
+- docker run ruby ls
+# - docker run ubuntu:18.04 ls
+# - docker run ubuntu:20.04 ls
 
-# # Snaps
-# - echo "==> Snaps"
-# - sudo snap install core || true
-# - sudo snap install core
-# - sudo snap install hello-world
-# - hello-world
-
-# # Sleep
-# #- sleep 600
-
-# # Docker
-# - echo "==> Docker"
-# - docker info
-# - docker run hello-world
-
-# # # # ruby
-# - echo "==> Ruby"
-# - ruby -v
-# #- gem i bundler
-# # # #- sleep 120
-
-# # # # python
-# - echo "==> Python"
-# - python -V
+jobs:
+  include:
+  - rvm: 2.7.2
+    name: Ruby 2.7.2
+  - rvm: 2.7.1
+    name: Ruby 2.7.1
+  - rvm: 2.7.0
+    name: Ruby 2.7.0
+  - rvm: 2.6.0
+    name: Ruby 2.6.0
+  - rvm: 2.6.1
+    name: Ruby 2.6.1
+  - rvm: 2.6.2
+    name: Ruby 2.6.2
+  - rvm: 2.6.3
+    name: Ruby 2.6.3
+  - rvm: 2.6.4
+    name: Ruby 2.6.4
+  - rvm: 2.6.5
+    name: Ruby 2.6.5
+  - rvm: 2.6.6
+    name: Ruby 2.6.6  
